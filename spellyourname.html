@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Spell your Name</title>
+	<meta charset="utf-8">
+	<meta name="description" content="This is a simple app to help produce a workout by spelling your name, each individual letter has a workout, your name would have roughly 20 small workouts.">
+	<link rel="stylesheet" type="text/css" href="spellworkout.css">
+	<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+</head>
+<body>
+	<nav class="workout">
+		<h1>Spell Your Name!</h1>
+	</nav>
+
+	<main class="spellIt">
+		<form id = "js-do-it">
+			<label for="write-it-out js-write-it-out">write your name and hit Spell It!</label>
+				<input type="text" class="spelling-box js-submit-your-name" name="spelling-your-name" placeholder="Michael Murphy..">
+				<button type="submit" class="js-spell-it">Spell it!</button>
+			
+		</form>
+
+		<ul class="hidden js-list-it">
+			<li class="small-workout js-letter"><span class="js-value">:</span></li>
+		</ul>
+	</main>
+
+
+
+
+<script src="jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="Spellit.js"></script>
+</body>
+</html>

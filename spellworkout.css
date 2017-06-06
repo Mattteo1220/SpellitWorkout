@@ -1,0 +1,42 @@
+body {
+	/*background-color: blue;*/
+}
+
+.workout {
+	border: 1px solid black;
+	height: 50px;
+	width: 400px;
+	background-color: white;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 50px;
+}
+
+h1 {
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+
+.spellingbox {
+	
+}
+
+form {
+	text-align: center;
+	margin-top: 60px;
+}
+
+input {
+	height: 30px;
+	width: 200px;
+}
+
+button {
+	height: 30px;
+	width: 100px;
+}
+
+/*.hidden {
+	display: none;
+}*/
