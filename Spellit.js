@@ -29,45 +29,81 @@ var SpellIt = [
 ];
 
 
+//CONSTANTS
+var WOD_IDENTIFIER = ".ABC-workout";
+var CREATER = "#spelling-your-name";
+var RESULT = "#js-list";
 
-function workIt(name) {
-	for (var i = 0; i < name.length; i++) {
-		doIt(SpellIt);
-		console.log(name[i] + ": " + doIt(name[i]));
-		return name[i] + ": " + doIt(name[i]);
-
+function doIt(name) {
+	for (var i =0; i < name.length; i++) {
+		console.log(name[i] + ": " + findIt(name[i]));
+		return name[i] + ": " + findIt(name[i]);
 	}
 };
 
-function doIt(events) {
+function findIt(exercise) {
 	for (var i = 0; i < SpellIt.length; i++) {
-		if (SpellIt[i].letter == events) {
-			console.log(SpellIt[i].value);
+		if (SpellIt[i].letter == exercise) {
 			return SpellIt[i].value;
 		};
-	}
-}
-
-
-function submitName() {
-	$('js-submit-your-name').click(function(event){
-		event.preventdefault();
-	})
-}
-
-function listIt(item) {
-	console.log('`listIt` ran');
-	return '<li>' + item.letter + '</li>' + '<span>' + item.value + '</span>';
+	};
 };
 
 
-
-
-
-
-function myFuncs() {
-	submitName();
-	listIt();
+function generateItemElement(item) {
+	return '<li>' + item.letter + ": " + '<span>' + item.value + '</span>' + '</li>';
+	
 }
 
-$(myFuncs);
+
+function generateWODString(WOTD) {
+	console.log("`generateWODString` ran");
+	var items = WOTD.map(function(item) {
+		return generateItemElement(item);
+	});
+	return items.join("");
+	
+
+}
+
+
+function renderWOD(id,list) {
+	//This will render the ABC workout on load.
+	var exerciseString = list;
+
+	$(id).html(exerciseString);
+	console.log("`renderWOD` ran");
+}
+
+function createWOD() {
+	console.log("`createWOD` ran");
+	var name = $(CREATER).val();
+	var list = []; 
+	for (var i = 0; i < name.length; i++) {
+		for (var j =0; j < SpellIt.length; j++) {
+			if (SpellIt[j].letter == name[i]) {
+				list.push(SpellIt[j]);
+			}
+		}
+	}
+	renderWOD(RESULT,generateWODString(list));
+}
+
+
+
+
+
+function handleWOD() {
+	renderWOD(WOD_IDENTIFIER,generateWODString(SpellIt));
+}
+
+$(handleWOD);
+
+$(function(){
+	$("button").on("click",function(){
+		createWOD();
+	});
+	$(CREATER).keypress(function(){
+		createWOD();
+	})
+});
